@@ -3,9 +3,11 @@ from .base import *
 
 DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1',
-                'http://ldrportalapp.wqtttdcvsp.ap-southeast-1.elasticbeanstalk.com/',
+                'ldrportalapp.ap-southeast-1.elasticbeanstalk.com',
+                'http://ldrportalapp.ap-southeast-1.elasticbeanstalk.com/',
                 'http://portal.ldr.sg/',
                 ]
+
 
 SITE_ID = 1
 ADMINS = (

@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load user_agents %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}User Support Ticket List{% endblock %}
+
+{% block content %}
+
+<head>
+    <style>
+        #centerpagelists {
+            margin-left: 30% !important;
+            padding: 10px;
+        }
+    </style>
+</head>
+<div class="divider"></div>
+<div class="col-sm-4 offset-sm-4">
+        <!--Search form -->
+        <form method='GET' action='' class="form-inline waves-effect waves-light">
+            <input type='text' name='q' placeholder='Search Issues...' value='{{ request.GET.q }}'/>
+	        <input type='submit' value='Search' style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" />
+        </form>
+        <!--/Search form -->
+</div>
+<!--master container-->
+<div class="container-fluid" style="overflow:hidden;">
+        
+<!--all link buttons here-->
+   
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="text-center col-sm-4 mb-r wow slideInUp" data-wow-delay="0.1s">
+            <a href="/helpdesk/userticket_create" class="btn-floating btn-small red"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            <a href="/apps_list/" class="btn-floating btn-small red"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+        </div>
+    </div>
+   
+<!--all link buttons here-->
+
+<!--Body-->
+     
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs-wrapper"> 
+                <ul class="nav classic-tabs red" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link waves-light active" data-toggle="tab" href="#myticket" role="tab"><small>My Tickets ({{ user_object_count }}).</small></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" data-toggle="tab" href="#mygroupticket" role="tab"><small>My Group Tickets</small></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tab panels -->
+<div class="tab-content">
+    <!--Panel 1-->
+    <div class="tab-pane fade in show active" id="myticket" role="tabpanel">
+    <!--Body-->
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-12 col-md-12">
+        <ul class="list-group">
+        
+        {% for utl in object_list %}
+        
+        <li class="list-group-item justify-content-between">
+            <div class="col-lg-2 col-md-2 col-xs-2 text-left">
+                <h6>{{ utl.first_create_date|date:"d-m-Y" }} {{ utl.ticket_category }}-{{ utl.ticket_number }}</h6>
+                {% for up in uprofile %}
+                        {% if utl.ticket_owner|slugify == up.user|slugify %}
+                    
+                        {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="col-lg-5 col-md-5 text-left">
+                <h6>Issue: {{ utl.ticket_issue }}</h6>
+                <h6>Priority: {{ utl.ticket_priority }}</h6>
+                
+            </div>
+            
+            <div class="col-lg-3 col-md-3 text-left">
+                {% if utl.ticket_status == "Started" %}
+                    <h6>Current Status: <span class="badge yellow">{{ utl.ticket_status }}</span></h6>
+                {% elif utl.ticket_status == "In Progress" %}
+                    <h6>Current Status: <span class="badge blue">{{ utl.ticket_status }}</span></h6>
+                {% elif utl.ticket_status == "Pending" %}
+                    <h6>Current Status: <span class="badge red">{{ utl.ticket_status }}</span></h6>
+                {% elif utl.ticket_status == "Completed" %}
+                    <h6>Current Status: <span class="badge green">{{ utl.ticket_status }}</span></h6>
+                {% elif utl.ticket_status == "Closed" %}
+                    <h6>Current Status: <span class="badge green">{{ utl.ticket_status }}</span></h6>
+                {% endif %}
+            </div>
+
+            <div class="col-lg-2 col-md-2 text-right">
+                <a class="badge badge light-blue" href="/helpdesk/{{ utl.pk }}/userticket_detail"><i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i></a>
+                <a class="badge badge orange" href="/helpdesk/{{ utl.pk }}/userticket_update"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+            </div>
+        </li>
+        {% empty %}
+        <small>Nothing to display now, please proceed to create a new support ticket by pressing + button above.</small>
+        
+        {% endfor %}
+        </ul>
+    </div>
+    </div>
+    </div>
+    
+
+    <!--Pagination1 starts here-->
+    <div id="centerpagelists">
+        
+        {% if is_paginated %}
+        <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li>
+                <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+            </li>
+        {% endif %}
+            <li class="">
+                <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+            </li>
+        {% if page_obj.has_next %}
+            <li>
+                <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+            </li>
+        {% endif %}
+        </ul>
+        {% else %}
+            <p class="deep-orange-text text-center">end of list</p>
+        {% endif %}
+
+    </div>
+    <!--/pagination1 starts here-->
+    </div>
+<!--/Panel 1-->
+
+<!--Panel 2-->
+<div class="tab-pane fade" id="mygroupticket" role="tabpanel">
+    <!--Body2-->
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-lg-12 col-md-12">
+                <ul class="list-group">
+                <!--thisuserprofile-->
+                {% for tup in thisuprofile %}
+                    
+                    <!--objects all-->
+                    {% for ola in object_list_all %}
+                        {% if ola.user_group == tup.user_group %}
+                            
+                    <a href="/helpdesk/{{ ola.pk }}/userticket_detail">
+                        <li class="list-group-item justify-content-between">
+                            {% for up in uprofile %}
+                            {% if ola.ticket_owner|slugify == up.user|slugify %} 
+                                {% if up.usercover %}
+                                <div class="col-lg-3 col-md-3 text-left">
+                                    <img src="{{ up.usercover.url }}" class="list-img-md img-responsive img-fluid rounded-circle" alt="ticket_owner">
+                                    <small>{{ up.user_group }}:{{ up.firstname|slice:":1" }}{{ up.lastname|slice:":1" }}</small><br/>
+                                </div>
+                                {% endif %}
+                 
+                            {% endif %}
+                            {% endfor %}
+                                
+                                <div class="col-lg-6 col-md-6 text-left">
+                                    
+                                    <h6>{{ ola.ticket_issue }}<br />
+                                        <small>{{ ola.ticket_description }}</small>
+                                    </h6>
+                                    
+                                </div>
+                                    
+                                <div class="col-lg-3 col-md-3 text-left">
+                                    <small>{{ ola.first_create_date|date:"d-m-Y" }} {{ ola.ticket_category }}-{{ ola.ticket_number }}</small>
+                                    <h6>Priority: {{ ola.ticket_priority }}</h6>
+                                    {% if ola.ticket_status == "Started" %}
+                                        <h6>Current Status: <span class="badge yellow">{{ ola.ticket_status }}</span></h6>
+                                    {% elif ola.ticket_status == "In Progress" %}
+                                        <h6>Current Status: <span class="badge blue">{{ ola.ticket_status }}</span></h6>
+                                    {% elif ola.ticket_status == "Pending" %}
+                                        <h6>Current Status: <span class="badge red">{{ ola.ticket_status }}</span></h6>
+                                    {% elif ola.ticket_status == "Completed" %}
+                                        <h6>Current Status: <span class="badge green">{{ ola.ticket_status }}</span></h6>
+                                    {% elif ola.ticket_status == "Closed" %}
+                                        <h6>Current Status: <span class="badge green">{{ ola.ticket_status }}</span></h6>
+                                    {% endif %}
+                                </div>
+                        
+                                                                  
+                         </li>
+                     </a>
+                        {% endif %}
+                     
+                        
+                    {% empty %}
+                        <h6>No  tickets</h6>
+                    {% endfor %}
+                    <!--/objects all-->
+
+                    
+                    
+                    {% endfor %}
+                    <!--/thisuserprofile-->
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--Body2-->
+
+    <!--pagination pannel 2 starts here-->
+
+     <div class="pull-right">
+             
+             {% if is_paginated %}
+             <ul class="pagination">
+             {% if page_obj.has_previous %}
+                 <li>
+                     <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+                 </li>
+             {% endif %}
+                 <li class="">
+                     <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                 </li>
+             {% if page_obj.has_next %}
+                 <li>
+                     <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+                 </li>
+             {% endif %}
+             </ul>
+             {% else %}
+                 <p class="deep-orange-text text-center">end of list</p>
+             {% endif %}
+     </div>
+     <!--/pagination pannel 2 starts here-->
+ 
+</div>
+<!--/.Panel 2-->
+
+</div>
+<!-- /Tab panels -->
+</div>
+<!--/container-->
+
+
+
+
+
+<div class="divider"></div>
+<!--/pagination starts here-->
+
+</div>
+<!--/master container-->
+
+
+{% endblock %}

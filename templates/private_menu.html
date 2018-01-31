@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load static %}
+
+{% comment %}
+    {% include 'static/dmenu/private_menu.html' %}
+{% endcomment %}
+
+<head>
+    <style>
+        
+
+        #tophome{
+            background-color: #f15b5b;
+        }
+
+        .trigger {
+            padding: 1px 20px;
+            font-size: 18px;
+            font-weight: 400;
+            border-radius: 10px;
+            background-color: #f15b5b;
+            color: #212121;
+            display: inline-block;
+            margin: 2px 5px;
+            }
+
+            .hoverable, .trigger {
+            transition: box-shadow 0.55s;
+            box-shadow: 0;
+            }
+
+            .hoverable:hover, .trigger:hover {
+            transition: box-shadow 0.45s;
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #00aeef;
+            }
+
+               
+    </style>
+</head>
+
+{% if user.is_authenticated %}
+
+<div id="tophome" class="fixed-top text-center white-text">
+    <small>
+        <a href="\"><span class="trigger white-text">&nbsp;Home</span></a>
+        <a href="/apps_list/"><span class="trigger white-text">&nbsp;App&nbsp;Stash</span></a>
+        <a href="/accounts/logout/"><span class="trigger white-text">Logout</span></a>
+    </small>
+</div>
+{% endif %}

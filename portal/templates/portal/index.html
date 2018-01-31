@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load staticfiles %}
+{% load user_agents %}
+{% block title %}{% trans "LDR Portal" %}{% endblock %}
+
+{% block content %}
+
+<head>
+        <link href="{% static "/static/helloworld/css/styles.css" %}" rel="stylesheet">
+        <link href="{% static "/static/helloworld/css/gradients.css" %}" rel="stylesheet">
+    <style>
+
+        .wrapper {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%
+        }
+        
+        path {
+            stroke: #fff;
+            fill: #fff;
+
+        } 
+
+        #bottomhome{
+            background-color: #f15b5b;
+        }
+
+        #ldrlogin{
+            color: white !important;
+        }
+
+        .trigger {
+                padding: 1px 20px;
+                font-size: 18px;
+                font-weight: 400;
+                border-radius: 10px;
+                background-color: #f15b5b;
+                color: #212121;
+                display: inline-block;
+                margin: 2px 5px;
+                }
+
+                .hoverable, .trigger {
+                transition: box-shadow 0.55s;
+                box-shadow: 0;
+                }
+
+                .hoverable:hover, .trigger:hover {
+                transition: box-shadow 0.45s;
+                box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                background-color: #00aeef;
+                }
+
+                .correct-margins{
+                    margin-left: -10px;
+                    margin-right: -10px;
+                }
+
+        /* start pc landscape */
+			@media screen and (orientation: landscape) {
+				
+
+                .logo-fluid{
+                    
+                    width: 340px;
+                    height: auto;
+                    
+                }
+
+                #centerlogo {
+                    margin: auto;
+                    /*padding: 30px 10px 10px 20px; */
+                }
+
+                .extra-padbottom{
+                    padding-bottom: 40px;
+                }
+			}
+			/* end pc landscape */
+		
+		
+            {% if request|is_mobile %}
+			/* start mobile landscape */
+			@media screen and (orientation: landscape) {
+				#yourclassname {
+					overflow: hidden;
+					padding-bottom: 5px;
+				}
+
+                #centerlogo {
+                margin: auto;
+                padding-top: 5px;
+                }
+
+                .logo-fluid{
+                    width: 200px;
+                    height: auto;   
+                }
+
+			}
+            {% endif %}
+
+            
+			/* end mobile landscape */
+				
+		
+			/* start mobile portrait */
+			@media screen and (orientation: portrait) {
+				
+                .logo-fluid{
+                    width: 310px;
+                    height: auto;   
+                }
+
+                #centerlogo {
+                overflow: hidden;
+                margin: auto;
+                padding-top: 50px;
+                }
+
+			}
+
+            
+
+			/* end mobile portrait */
+		
+			
+			/* hiding long texts and show only the icons for small devices */ 
+			@media screen and (max-width: 480px) {
+				label {
+						font-size: 0px;
+						padding: 0px !important;
+					}
+			}
+			/* hiding long texts and show only the icons for small devices */ 
+		
+    </style>
+</head>
+<div class="divider"></div>
+<div class="divider"></div>
+
+
+<div  class="container-fluid">
+        
+        <div class="row">
+            
+
+            <div class="col">
+                    
+                    
+                
+                    <div class="text-center">
+                            <img id="centerlogo" src="{% static 'images/ldr_logo_transparent2.png' %}" class="logo-fluid text-center" alt="Responsive LDR">
+                {% if user.is_authenticated %}
+                    
+                {% for up in uprofile %}
+
+                            {% if user.username|slugify == up.user|slugify %}
+                                <br /><span class="trigger"><a id="ldrlogin" href="/helpdesk/userticket_list/" class="extra-padbottom"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Support&nbsp;Ticket</a></span>
+                            {% elif up.user|slugify == '' %}
+                                <br /><span class="trigger"><a id="ldrlogin" href="#" class="extra-padbottom"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Support&nbsp;Ticket</a></span>
+                            {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <br /><span class="trigger"><a id="ldrlogin" href="/accounts/login/" class="extra-padbottom"><i class="fa fa-user">&nbsp;</i>&nbsp;Login</a></span> 
+                {% endif %}
+                    </div>
+                 
+            </div>
+            
+            
+            {% comment %}
+            {% for up in uprofile %}
+            {{ up.user }}
+                {% if user.username|slugify == up.user|slugify %}    
+            
+                    {{ up.user }}<br />
+
+                {% else %}
+                    {{ up.user }}
+                {% endif %}
+
+                {% empty %}
+                <span>No Records Found!</span>
+            {% endfor %}
+            {% endcomment %}
+           
+        </div class="fixed-bottom">
+
+        {% if user.is_authenticated %} 
+            
+        <div id="bottomhome" class="fixed-bottom text-center white-text trigger correct-margins"><a href="/up/up_list"><span class="white-text trigger"><i class="fa fa-user">&nbsp;{{ user.username }}'s Profile</i></span></a></div>
+               {% comment %}
+                    <div id="bottomhome" class="fixed-bottom text-center white-text trigger correct-margins"><a onclick="toastr.error('Please click App Stash to Create Your Profile');"><span class="white-text trigger"><i class="fa fa-user">&nbsp;{{ user.username }}'s Profile</i></a></span></div>
+               {% endcomment %}
+        {% else %}
+            <div id="bottomhome" class="fixed-bottom text-center white-text correct-margins"><small>Copyright © 2017 LDR PORTAL. | All rights reserved.</small></div>
+        {% endif %}
+       </div>
+
+    
+
+
+{% endblock %}

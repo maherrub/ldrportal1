@@ -1,0 +1,90 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+
+        #tophead {
+            background-color: #01aeef;
+            font-size: 16px !important;
+            
+        }
+
+        #tophome {
+            background-color: #01aeef;
+            font-size: 16px !important;
+            padding: .075rem .75rem !important;
+        }
+
+        #loginbox {
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="container-fluid">
+
+    <div id="loginbox" class="card col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 wow fadeInDown" data-wow-delay="0.2s">
+        
+           
+            <!--Header-->
+           
+            <div id="tophead" class="form-header z-depth-2 view overlay hm-white-slight">
+                <h5><i class="fa fa-lock"></i>&nbsp;{% trans 'Log in' %}</h5>
+                <div class="mask waves-effect waves-light"></div>
+            </div>
+          
+            <!--Body-->
+            
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input id="tophome" class="btn btn-block btn-sm" type="submit" value="{% trans 'Log in' %}" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+                <div class="divider"></div>
+                <span class="text-center">{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.
+                {% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</span>
+                    
+                
+        </div>
+    </div>
+
+</div>
+<div class="divider"></div>
+
+{% endblock %}
+
+
+{% comment %}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+    A Form object representing the login form. See the forms
+    documentation for more on Form objects.
+
+``next``
+    The URL to redirect to after successful login. This may contain a
+    query string, too.
+
+``site``
+    The current Site, according to the SITE_ID setting. If you don't
+    have the site framework installed, this will be set to an instance
+    of RequestSite, which derives the site name and domain from the
+    current HttpRequest.
+
+``site_name``
+    An alias for site.name. If you don't have the site framework
+    installed, this will be set to the value of
+    request.META['SERVER_NAME']. For more on sites, see The
+    "sites" framework.
+{% endcomment %}

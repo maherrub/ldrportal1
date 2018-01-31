@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load user_agents %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %} {{ object.scheduleName }} {% endblock %}</h6>
+
+{% block content %}
+<head>
+    <style>
+        .backarrow {
+            width: 30px;
+            height: 25px;
+            margin-left: 10px;
+        }
+    
+    </style>
+</head>
+<div class="divider"></div>
+<div class="divider"></div>
+<h2>
+    <a class="backarrow" href="javascript: window.history.go(-1);">
+        <img class="backarrow" src="{% static 'images\leftArrow.png' %}">
+    </a>
+    {{ object.scheduleID }} {{ object.workPackageName }}
+</h2>
+
+<!--Schedule Activity Container-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="table-responsive table table-striped table-hover table-sm">          
+            <table class="table">
+                <thead class="info-color">
+                    <tr class="text-white">
+                        <th>#</th>
+                        <th>Activity</th>
+                        <th>Assigned</th>
+                        <th>Man Days</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for activity in activity_list %}
+                
+                    {% if  object.scheduleID|slugify == activity.scheduleName|slugify %}
+                    <tr>                                    
+                        <td>{{ activity.activityOrder }}</td>
+                        <td>{{ activity.activityName }}</td>
+                        <td>{{ activity.members }}</td>
+                        <td>{{ activity.numberOfDays }}</td>
+                        <td>{{ activity.activityStartDate }}</td>
+                        <td>{{ activity.activityEndDate }}</td>
+                        
+                        <td><a href="/project/{{ schedule.pk }}/schedule_activity_detail"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/Schedule Activity Container-->   
+
+{% endblock %}

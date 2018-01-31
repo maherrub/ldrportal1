@@ -1,0 +1,52 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Account Activated" %}{% endblock %}
+
+{% block content %}
+<br />
+<div class="divider"></div>
+<div class="container-fluid">
+<div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-0">
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+             <div class="top-bottom-animate">
+                <div class="small text-muted">System Message:</div>
+                    <div>
+                        <p class="text-center">
+                            {% trans "Your account is now activated. Go to" %}
+                            {% if not user.is_authenticated %}
+                            {% trans "You can log in." %}
+                            {% endif %}
+                            <a href="/apps_list/" class=" btn btn-success">App Stash</a>
+                        </p>
+                        
+                        <div class="pull-right">
+                            
+                        </div>
+                    </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-0">
+                    
+            </div>
+
+</div>
+        </div>
+</div>
+</div>
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+{% endblock %}
+
+
+{% comment %}
+**registration/activation_complete.html**
+
+Used after successful account activation. This template has no context
+variables of its own, and should simply inform the user that their
+account is now active.
+{% endcomment %}

@@ -1,0 +1,35 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Activation email sent" %}{% endblock %}
+
+{% block content %}
+<head>
+        <style>
+            #centerok {
+                    margin: auto;
+                    padding-top: 5px;
+                    }
+        </style>
+    </head>
+
+<div class="divider"></div>
+<div class="divider"></div>
+<div>
+<p class="text-center">{% trans "Please check your email to complete the registration process." %}
+<span onclick="history.go(-3);" class="btn btn-primary text-center">Got it!</span></p>
+</div>
+<div class="divider"></div>
+<div class="divider"></div>
+{% endblock %}
+
+
+{% comment %}
+**registration/registration_complete.html**
+
+Used after successful completion of the registration form. This
+template has no context variables of its own, and should simply inform
+the user that an email containing account-activation information has
+been sent.
+{% endcomment %}

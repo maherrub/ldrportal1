@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load user_agents %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}  {% endblock %}</h6>
+
+{% block content %}
+<head>
+    <style>
+        .backarrow {
+            width: 30px;
+            height: 25px;
+            margin-left: 10px;
+        }
+    
+    </style>
+</head>
+<div class="divider"></div>
+<div class="divider"></div>
+<h2>
+    <a class="backarrow" href="javascript: window.history.go(-1);">
+        <img class="backarrow" src="{% static 'images\leftArrow.png' %}">
+    </a>
+    {% for object in supportadmin_fulllist %}
+        All projects supported by {{ object.administrator }}
+        <td><a href="/project/{{ object.administrator }}/project_fullticket_list"></a>
+           
+        </td>
+    {% endfor %}
+</h2>
+
+<!--Project ticket_list Container-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="table-responsive table table-striped table-hover table-sm">          
+            <table class="table">
+                <thead class="info-color">
+                    <tr class="text-white">
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Issue</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Requester</th>
+                        <th>Assigned</th>
+                        <th>Project Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for ticket in ticket_fulllist %}
+                    {% for object in supportadmin_fulllist %}
+                        {% if object.administrator|slugify == ticket.assigned_admin|slugify %}
+                            
+                    <tr>                                    
+                        <td>{{ ticket.ticket_number }}</td>
+                        <td>{{ ticket.ticket_category }}</td>
+                        <td>{{ ticket.ticket_issue }}</td>
+                        <td>{{ ticket.ticket_priority }}</td>
+                        <td>{{ ticket.ticket_status }}</td>
+                        <td>{{ ticket.ticket_owner }}</td>
+                        <td>{{ ticket.assigned_admin }}</td>
+                        <td>{{ ticket.attach2project }}</td>
+                        
+                        
+                    </tr>
+                                
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/Project ticket_list Container-->   
+
+{% endblock %}

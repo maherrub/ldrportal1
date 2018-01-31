@@ -1,0 +1,353 @@
+{% load static %}
+{% load staticfiles %}
+{% load user_agents %}
+{% load i18n %}
+<!DOCTYPE html>
+<html class="no-skrollr" lang="en">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% trans 'LDR Technology' %}</title>
+
+    <!-- Simple Menu -->
+    
+    <link href="{% static 'css/simple_menu.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery.mmenu.all.css' %}" rel="stylesheet">
+
+    
+    
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+
+    
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mdb.min.4.3.2.css' %}" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="{% static 'images/favicon-32x32.png' %}" sizes="32x32" />
+
+    <!--Custom Parallax CSS -->
+    <!--
+    <link href="{% static 'css/parallax_hg_eng.css' %}" rel="stylesheet">
+    -->
+    <link href="{% static 'css/parallax_skroll.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fredericka+the+Great|Great+Vibes|Pompiere|Roboto:100" rel="stylesheet">
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!--Custom Style Sheet-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <!--
+    <style>
+    
+        /* Carousel and pictures */
+        .view:not(.hm-zoom) {
+            overflow:visible;
+        }
+    
+    </style>
+    -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    
+<script type="text/javascript" src="{% static 'js/responsive-switch.min.js' %}"></script>
+</head>
+
+<body class="mdb-skin" id="page-top"> <!--fixed-sn-->
+    
+    <!--Navigation Bar -->
+            {% comment %}
+            {% if request|is_pc and user.is_authenticated %}
+                {% include 'private_menu.html' %}
+            {% elif request|is_mobile and user.is_authenticated %}
+                {% include 'simple_private_menu.html' %}
+            {% elif request|is_mobile %}
+                {% include 'simple_public_menu.html' %}
+            {% else %}
+                {% include 'public_menu.html' %}
+            {% endif %}
+            {% endcomment %}
+    
+    
+            {% if user.is_authenticated %}
+                {% include 'private_menu.html' %}
+            {% endif %}
+    <!--loading modals-->
+       <!--common right menu-->
+       
+        {% include 'rightmenu.html' %}
+        {% include 'bottommenu.html' %}
+       
+        <!--/common right menu-->
+    <!--loading modals-->
+    
+    <!--Main layout-->
+    <main>
+        
+            <!--main web content will go within below blocks-->     
+            {% block content %}
+
+            {% endblock %}
+    
+    </main>
+    <!--/Main layout-->
+
+      
+                      
+    
+
+<!--Footer-->
+    <footer><!-- class="page-footer center-on-small-only">
+
+     
+
+        <!--Call to action-->
+        
+
+    
+    {% if user.is_authenticated %}
+        <div class="fixed-action-btn smooth-scroll" style="bottom: 220px; right: 1px;">
+            {% for message in messages %}
+	            {% if message|length >= 0 %}
+                <span class="counter" style="margin-left:15px; margin-top: -7px;">
+                <small>New!</small>
+               </span>
+                {% endif %}
+            {% empty %} 
+            {% endfor %}
+            
+            <a data-toggle="modal" data-target="#bottommenu" class="btn-floating btn-small red" style="background-color:rgba(0, 0, 0, 0.25) !important;">
+                
+                <i class="fa fa-sort-amount-asc fa-rotate-360"></i>
+                
+            </a>
+        </div>
+
+        {% comment %}
+        <div class="fixed-action-btn smooth-scroll" style="bottom: 170px; right: 1px;">
+                <a href="\" class="btn-floating btn-small red" style="background-color:rgba(0, 0, 0, 0.25) !important;">
+                    <i class="fa fa-square-o" aria-hidden="true"></i>
+                </a>
+        </div>
+        {% endcomment %}
+        
+        <div class="fixed-action-btn smooth-scroll" style="bottom: 120px; right: 1px;">
+            <a onclick="history.go(-1);" class="btn-floating btn-small red" style="background-color:rgba(0, 0, 0, 0.25) !important;">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+        
+        {% comment %}
+        <div class="fixed-action-btn smooth-scroll" style="bottom: 70px; right: 1px;">
+            <a href="#page-bottom" class="btn-floating btn-small red" style="background-color:rgba(0, 0, 0, 0.25) !important;">
+                <i class="fa fa-arrow-down"></i>
+            </a>
+        </div>
+        {% endcomment %}
+        
+        <div class="fixed-action-btn smooth-scroll" style="bottom: 20px; right: 1px;">
+            <a href="#page-top" class="btn-floating btn-small red" style="background-color:rgba(0, 0, 0, 0.25) !important;">
+                <i class="fa fa-arrow-up"></i>
+            </a>
+        </div>
+        {% endif %}    
+        <!--/.Call to action-->
+
+        <!--Copyright-->
+        {% comment %}
+        <div class="footer-copyright" id="page-bottom">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="http://www.ldrtech.sg/">LDR Technology</a>
+            </div>
+        </div>
+        {% endcomment %}
+        <!--/.Copyright-->
+        
+    </footer>
+    <!--/.Footer-->
+
+</div>
+<!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    
+    <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    
+    <!-- Tooltips -->
+    <script type="text/javascript" src="{% static 'js/tether.min.js' %}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- MDB core JavaScript -->
+    
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+    <!--Charts.js-->
+    <script type="text/javascript" src="{% static 'js/Chart.bundle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
+    
+    <script>
+        // SideNav init
+        $(".button-collapse").sideNav();
+        var el = document.querySelector('.custom-scrollbar');
+        Ps.initialize(el);
+    </script>
+
+    <script>
+        new WOW().init();
+    </script>
+
+
+    <!-- Data Picker Initialization-->
+    <script>
+    $('.datepicker').pickadate({
+        format: 'yyyy-mm-dd',
+        formatSubmit: 'yyyy-mm-dd', 
+        selectYears: true,
+        selectMonths: true,
+        selectYears: 80,
+        max: 'Today',});
+    </script>
+
+<!--test video script-->
+<script>
+    
+$('.hi span:first-of-type').on('click', function(){
+  $('#tv').toggleClass('mute');
+  $('.hi em:first-of-type').toggleClass('hidden');
+  if($('#tv').hasClass('mute')){
+    tv.mute();
+  } else {
+    tv.unMute();
+  }
+});
+
+$('.hi span:last-of-type').on('click', function(){
+  $('.hi em:nth-of-type(2)').html('~');
+  tv.pauseVideo();
+});
+</script>
+
+
+
+
+
+{% if request|is_mobile %}
+<!--jquery mobile menu-->
+
+    <script type="text/javascript" src="{% static 'js/jquery.mmenu.all.js' %}"></script>
+
+    <script type="text/javascript">
+			$(document).ready(function() {
+				$('#menu').mmenu({
+					extensions	: [ "theme-black", "listview-huge", "fx-panels-slide-100", "fx-listitems-slide", "fx-menu-slide", "border-offset", "pagedim-black",],
+					iconPanels	: true,
+					counters	: true,
+					keyboardNavigation : {
+						enable	: true,
+						enhance	: true
+					},
+					
+					navbar : {
+                        
+						title : 'LDR Technology'
+					},
+					navbars	: [
+                                
+
+						 {
+							position	: 'top',
+							content		: [ 'breadcrumbs', 'close' ]
+						}, {
+							position	: 'bottom',
+							content		: [ '<a href="#" target="_blank">PDA Policy</a>', 
+                                            '<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>',
+                                            '<a href="#" target="_blank"><i class="fa fa-instagram"></i></a>',
+                                            '<a href="#" target="_blank"><i class="fa fa-youtube"></i></a>' ]
+						}
+					]
+				}, {
+					searchfield : {
+						clear : true
+					}
+				});
+			});
+		</script>
+{% endif %}
+<!--Desk Menu-->
+
+<script>
+    $(document).ready(function() {
+        $( '.dropdown' ).hover(
+            function(){
+                $(this).children('.sub-menu').slideDown(250);
+            },
+            function(){
+                $(this).children('.sub-menu').slideUp(200);
+            }
+        );
+    }); // end ready
+</script>
+
+<!--Socialmediafriendslist-->
+<script>
+
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+</script>
+<!--/Socialmediafriendslist-->
+
+<!--Socialmediauserlist-->
+<script>
+
+function myFunction2() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput2");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL2");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+
+        }
+    }
+}
+</script>
+<!--/Socialmediauserlist-->
+
+
+</body>
+
+</html>

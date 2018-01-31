@@ -3,6 +3,7 @@ from .base import *
 
 DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1',
+                'portal.ldr.sg',
                 'ldrportalapp.ap-southeast-1.elasticbeanstalk.com',
                 'http://ldrportalapp.ap-southeast-1.elasticbeanstalk.com/',
                 'http://portal.ldr.sg/',
@@ -33,7 +34,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'ldrportalapp.wqtttdcvsp.ap-southeast-1.elasticbeanstalk.com:11211',
+        'LOCATION': 'ldrportalapp.ap-southeast-1.elasticbeanstalk.com:11211',
     }
 }
 

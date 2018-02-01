@@ -2,7 +2,7 @@ from .base import *
 #SECRET_KEY='byu%f0^45pzqb(3rj(_^r3!d=g9jl!n^1#4g)8#8br)(f4h3zo'
 
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1',
+ALLOWED_HOSTS = ['localhost',
                 'portal.ldr.sg',
                 'ldrportalapp.ap-southeast-1.elasticbeanstalk.com',
                 'http://ldrportalapp.ap-southeast-1.elasticbeanstalk.com/',

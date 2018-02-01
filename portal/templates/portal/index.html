@@ -8,22 +8,50 @@
 {% block content %}
 
 <head>
-        <link href="{% static "/static/helloworld/css/styles.css" %}" rel="stylesheet">
-        <link href="{% static "/static/helloworld/css/gradients.css" %}" rel="stylesheet">
+        
     <style>
 
         .wrapper {
             position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30%
-        }
-        
-        path {
-            stroke: #fff;
-            fill: #fff;
+			top:45%;
+			left:50%;
+			transform: translate(-50%, -50%);
+			
+		}
 
+        path {
+	        stroke: #fff;
+	        fill: #fff;
+	        stroke-dasharray: 1800;
+	        opacity:10;
+	        animation: animate 3s cubic-bezier(0,0.23,1,.1);
+        }
+
+        @keyframes animate {
+	        0% {
+		        opacity: 0;
+		        fill: none;
+		        stroke-dashoffset: 1800;
+	        }
+	
+	        30% {
+		        opacity: 10;
+		        fill: none;
+		        stroke-dashoffset: 1800;
+	        }
+	
+	        90% {
+		
+		        fill: rgba(225,225,225,0);
+		
+	        }
+		
+	        100% {
+		        opacity: 10;
+		        rgba(225,225,225,1);
+		        stroke-dashoffset:0;
+	        }
+	
         } 
 
         #bottomhome{
@@ -32,6 +60,7 @@
 
         #ldrlogin{
             color: white !important;
+            top:45%;
         }
 
         .trigger {
@@ -64,6 +93,13 @@
         /* start pc landscape */
 			@media screen and (orientation: landscape) {
 				
+                .trigger{
+					margin-top: 25%;
+				}
+				
+				.wrapper {
+					width: 30%;
+				}
 
                 .logo-fluid{
                     
@@ -112,6 +148,14 @@
 			/* start mobile portrait */
 			@media screen and (orientation: portrait) {
 				
+                .trigger{
+					margin-top: 90%;
+				}
+				
+				.wrapper {
+					width: 50%;
+				}
+
                 .logo-fluid{
                     width: 310px;
                     height: auto;   
@@ -143,9 +187,56 @@
 </head>
 <div class="divider"></div>
 <div class="divider"></div>
+<!--svg logo-->
+<div class="wrapper">
+    
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 361 273" style="enable-background:new 0 0 361 273;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:#FFF;stroke:#f15b5b;stroke-miterlimit:10;}
+</style>
+<g>
+<path class="st0" d="M17.6,14.1h10.3v133.7h71.5l-1.9,10.3H17.6V14.1z"/>
+<path class="st0" d="M120,14.1h44.1c36.5,0,61.8,27.6,61.8,70.8c0,43-24.7,73.2-62,73.2H120V14.1z M130.2,147.8h32.1
+c35.2,0,52.5-26.7,52.5-62.3c0-31.7-15.6-61.1-52.5-61.1h-32.1V147.8z"/>
+<path class="st0" d="M265.7,90.8v67.3h-10.5v-144h47.7c26.2,0,40.1,15.2,40.1,37.9c0,18.3-10.1,30.2-24.9,33.7
+c13.7,3.5,22.8,13.2,22.8,37.7v5.6c0,10.1-0.8,23.7,1.7,29.2h-10.5c-2.5-6.2-1.9-17.7-1.9-30v-3.7c0-23.7-6.5-33.5-32-33.5H265.7z
+ M265.7,80.5h32.1c23.4,0,34.2-9.5,34.2-28.4c0-17.7-10.7-27.8-31.4-27.8h-35V80.5z"/>
+</g>
+<g>
+</g>
+<g>
+<path class="st0" d="M17.5,211.5H24v-11.7h3.5v11.7h8.3v3.5h-8.3v24.4c0,4.2,0.8,6.6,4.2,6.6c1,0,2.5-0.1,3.6-0.5v3.3
+c-1.2,0.5-2.9,0.7-4.3,0.7c-4.5,0-7-2.4-7-8.4V215h-6.5V211.5z"/>
+<path class="st0" d="M43.2,230.7c0.1,9.7,4.6,15.7,11.3,15.7c6.6,0,8.8-4,10-7h3.6c-1.5,5-5.2,10.6-13.7,10.6
+c-10.6,0-14.7-9.8-14.7-19.3c0-10.7,5-19.9,15.1-19.9c10.7,0,14.2,10,14.2,17c0,1,0,2.1-0.1,3.1H43.2z M65.3,227.4
+c-0.1-7.4-3.8-13.3-10.7-13.3c-7.2,0-10.5,5.4-11.2,13.3H65.3z"/>
+<path class="st0" d="M103.5,238c-1.7,6.6-5.7,11.9-13.5,11.9c-8.7,0-14.9-7-14.9-19.5c0-10.3,5.1-19.8,15.3-19.8
+c8.9,0,12.5,6.8,13.1,12h-3.6c-1-4.4-3.7-8.5-9.6-8.5c-7.4,0-11.6,6.8-11.6,16.1c0,8.9,3.9,16.1,11.2,16.1c5.1,0,8.2-2.8,10-8.4
+H103.5z"/>
+<path class="st0" d="M115.1,193.7v24.1c2-3.9,5.4-7.2,11.5-7.2c5,0,11.8,2.7,11.8,14.5V249h-3.5v-23.1c0-7.4-3.1-11.6-8.9-11.6
+c-6.9,0-10.9,4.6-10.9,13.8V249h-3.5v-55.3H115.1z"/>
+<path class="st0" d="M149.8,221c0-3.3,0-6.5-0.1-9.4h3.4c0.1,1.2,0.2,6.1,0.1,7.1c1.5-3.8,4.4-8,11.6-8c6.2,0,11.7,3.8,11.7,14.1
+V249h-3.5v-23.7c0-6.7-2.6-11-8.7-11c-8.3,0-11.2,7.4-11.2,15.6V249h-3.5V221z"/>
+<path class="st0" d="M216.3,230.2c0,10.4-5.4,19.7-15.8,19.7c-9.4,0-15.3-8.3-15.3-19.6c0-10.7,5.5-19.6,15.6-19.6
+C210.2,210.6,216.3,218.4,216.3,230.2z M189,230.3c0,8.9,4.5,16.1,11.9,16.1c7.5,0,11.8-6.7,11.8-16.1c0-8.8-4.2-16.1-11.9-16.1
+C192.7,214.1,189,221.3,189,230.3z"/>
+<path class="st0" d="M224.9,249v-55.3h3.5V249H224.9z"/>
+<path class="st0" d="M268.1,230.2c0,10.4-5.4,19.7-15.8,19.7c-9.4,0-15.3-8.3-15.3-19.6c0-10.7,5.5-19.6,15.6-19.6
+C262,210.6,268.1,218.4,268.1,230.2z M240.8,230.3c0,8.9,4.5,16.1,11.9,16.1c7.5,0,11.8-6.7,11.8-16.1c0-8.8-4.2-16.1-11.9-16.1
+C244.6,214.1,240.8,221.3,240.8,230.3z"/>
+<path class="st0" d="M303.9,246.5c0,12-5,18.3-15.1,18.3c-9.1,0-12.8-5.5-13.7-11.2h3.6c1.3,5.2,5.2,7.6,10.3,7.6
+c9.1,0,11.6-6.3,11.6-15.8v-3.9c-1.9,4.9-5.3,7.5-11.7,7.5c-8.2,0-14.4-7.1-14.4-18.7c0-12.6,6.7-19.6,14.9-19.6
+c7.1,0,10.2,3.6,11.2,6.6c0.1-2.2,0.1-4.8,0.2-5.7h3.3c0,1.3-0.1,7.3-0.1,10.9V246.5z M278.2,230.1c0,8.9,4.4,15.4,11.1,15.4
+c8.7,0,11.4-6.2,11.4-16c0-9.9-2.8-15.4-11.2-15.4C281.5,214.1,278.2,221.6,278.2,230.1z"/>
+<path class="st0" d="M315.1,211.5c7,21.4,10.1,30.3,11.3,34.3h0.1c1.4-4.6,4.2-13.3,11-34.3h3.6l-13.1,39.7
+c-3.7,11.1-6.2,13.6-12.5,13.6c-1.3,0-2.1-0.1-3.2-0.2v-3.8c1,0.2,2,0.2,3.1,0.2c5,0,6.6-2.6,9.2-10.3l-13.3-39.1H315.1z"/>
+</g>
 
+</svg>
+</div>
 
-<div  class="container-fluid">
+<div class="container-fluid" style="overflow: hidden;">
         
         <div class="row">
             
@@ -155,8 +246,10 @@
                     
                 
                     <div class="text-center">
+                        <!--
                             <img id="centerlogo" src="{% static 'images/ldr_logo_transparent2.png' %}" class="logo-fluid text-center" alt="Responsive LDR">
-                {% if user.is_authenticated %}
+                        -->
+                            {% if user.is_authenticated %}
                     
                 {% for up in uprofile %}
 

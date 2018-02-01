@@ -87,7 +87,7 @@
         <div class="col-md-6">
             
             {% if object.ticket_screenshot %}
-                <img src="{{ object.ticket_screenshot.url }}" class="img-responsive img-fluid waves-effect waves-light pull-left hoverable" style="overflow:hidden" data-toggle="tooltip" title="Issue Image">
+                <img src="{{ object.ticket_screenshot.url }}" class="img-responsive img-fluid waves-effect waves-light pull-left hoverable" style="overflow:hidden;" data-toggle="tooltip" title="Issue Image">
             {% else %}
             <small>System message:"Requester did not attach any snapshot"</small>
             {% endif %}

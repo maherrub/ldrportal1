@@ -27,12 +27,53 @@ a {
   text-decoration: none;
 }
 .wrapper {
+  /*
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto -7rem;
   position: relative;
+  */
+  position: absolute;
+  top:45%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
 }
+
+path {
+	stroke: #fff;
+	fill: #fff;
+	stroke-dasharray: 65;
+	opacity:10;
+	animation: animate 3s cubic-bezier(0,0.23,1,.1);
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		fill: none;
+		stroke-dashoffset: 65;
+	}
+	
+	30% {
+		opacity: 10;
+		fill: none;
+		stroke-dashoffset: 50;
+	}
+	
+	100% {
+		opacity: 10;
+		fill: none;
+		stroke-dashoffset: 0;
+	}
+	
+	
+	
+}
+
+
+
 footer, .push {
   height: 7rem;
 }

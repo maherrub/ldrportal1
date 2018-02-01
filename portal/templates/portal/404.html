@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load staticfiles %}
+{% load user_agents %}
+{% block title %}{% trans "Oops!" %}{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row">
+        <div class="col">
+            <div class="text-center">
+                <h1>Opps! Something went wrong...</h1>
+                <h2>Click here to resolve now</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -19,6 +19,7 @@ from multiselectfield import MultiSelectField
 from django.db.models import Count
 from django.utils.safestring import mark_safe
 from django.db.models import Q
+from django.template import RequestContext
 
 #localapp imports
 from userapp.models import *
@@ -90,3 +91,12 @@ class AppsView(ListView):
         context['uprofile'] = UserProfile.objects.filter(pk = self.request.user.id).distinct()
         context['projectmanager'] = ProjectManager.objects.all().filter(pmUsername = self.request.user).distinct()
         return context  
+
+
+#error handlers
+
+def handler404(request):
+    response = render_to_response('404.html', {},
+                              context_instance=RequestContext(request))
+    response.status_code = 404
+    return response

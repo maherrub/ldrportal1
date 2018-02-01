@@ -7,6 +7,7 @@ ALLOWED_HOSTS = ['127.0.0.1',
                 'ldrportalapp.ap-southeast-1.elasticbeanstalk.com',
                 'http://ldrportalapp.ap-southeast-1.elasticbeanstalk.com/',
                 'http://portal.ldr.sg/',
+                '13.229.158.225',
                 ]
 
 

@@ -8,6 +8,7 @@ ALLOWED_HOSTS = ['localhost',
                 'http://ldrportalapp.ap-southeast-1.elasticbeanstalk.com/',
                 'http://portal.ldr.sg/',
                 '13.229.158.225',
+                'ip-172-30-0-43.ap-southeast-1.compute.internal',
                 ]
 
 

@@ -136,30 +136,30 @@ USE_TZ = True
 #STATIC_URL = '/static/'
 #STATIC_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/static'
 
-#LOGIN_REDIRECT_URL = '/'
-#LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/apps_list/'
+LOGIN_URL = '/accounts/login/'
 
 #crispy form settings
-#CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #Django Registration redux settings
-#ACCOUNT_ACTIVATION_DAYS = 7
-#REGISTRATION_AUTO_LOGIN = True
-#REGISTRATION_EMAIL_SUBJECT_PREFIX = '[LDR Portal User Account Registration]'
-#SEND_ACTIVATION_EMAIL = True
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+REGISTRATION_EMAIL_SUBJECT_PREFIX = '[LDR Portal User Account Registration]'
+SEND_ACTIVATION_EMAIL = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#SITE_ID = 1
+SITE_ID = 1
 
 #Settings for Email Setup
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_USE_TLS = True
-#EMAIL_PORT = 587
-#EMAIL_HOST = 'smtp.office365.com'
-#EMAIL_HOST_USER = 'itservices@ldr.sg'
-#EMAIL_HOST_PASSWORD = '7()fullfold'
-#SERVER_EMAIL = 'itservices@ldr.sg'
-#DEFAULT_FROM_EMAIL = 'itservices@ldr.sg'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST_USER = 'itservices@ldr.sg'
+EMAIL_HOST_PASSWORD = '7()fullfold'
+SERVER_EMAIL = 'itservices@ldr.sg'
+DEFAULT_FROM_EMAIL = 'itservices@ldr.sg'
 
 
 #REST framework webservice page size

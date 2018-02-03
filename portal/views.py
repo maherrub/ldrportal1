@@ -20,6 +20,7 @@ from django.db.models import Count
 from django.utils.safestring import mark_safe
 from django.db.models import Q
 from django.template import RequestContext
+from django.http import HttpResponse, HttpResponseNotFound
 
 #localapp imports
 from userapp.models import *

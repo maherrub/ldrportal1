@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'multiselectfield',
     'django_user_agents',
+    'storages',
     'rest_framework',
     'crispy_forms',
     'registration',

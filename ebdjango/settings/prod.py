@@ -7,6 +7,7 @@ ALLOWED_HOSTS = ['localhost',
                 'ldrportalapp.ap-southeast-1.elasticbeanstalk.com',
                 'http://ldrportalapp.ap-southeast-1.elasticbeanstalk.com/',
                 'http://portal.ldr.sg/',
+                'www.portal.ldr.sg/',
                 '13.229.158.225',
                 'ip-172-30-0-43.ap-southeast-1.compute.internal',
                 ]
@@ -47,11 +48,26 @@ USER_AGENTS_CACHE = 'default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+AWS_ACCESS_KEY_ID = 'AKIAJUPYZE3NU7BPNRIA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ldrportal-staticfiles'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+
+
+
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/static'
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/media'
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/media'
 
 ADMIN_SITE_HEADER = "PROD ADMINISTRATOR"

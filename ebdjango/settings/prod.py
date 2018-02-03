@@ -12,6 +12,7 @@ ALLOWED_HOSTS = ['localhost',
                 'ip-172-30-0-43.ap-southeast-1.compute.internal',
                 'https://ldrportal-staticfiles.s3.amazonaws.com',
                 'ldrportal-staticfiles.s3.amazonaws.com',
+                
                 ]
 
 
@@ -50,8 +51,8 @@ USER_AGENTS_CACHE = 'default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'AKIAINGBHOXVBD43FMNQ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAIL7JRCZN2Y2E3ZFQ'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'ldrportal-staticfiles'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
@@ -61,8 +62,6 @@ AWS_S3_OBJECT_PARAMETERS = {
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-
-
 
 
 STATIC_URL = '/static/'

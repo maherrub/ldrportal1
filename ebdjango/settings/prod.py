@@ -50,8 +50,8 @@ USER_AGENTS_CACHE = 'default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'AKIAJUPYZE3NU7BPNRIA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAINGBHOXVBD43FMNQ'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'ldrportal-staticfiles'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {

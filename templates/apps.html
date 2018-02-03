@@ -5,6 +5,24 @@
 
 
 {% block content %}
+<head>
+    <style>
+        #ldrbox{
+            border: #f15b5b;
+            border-style: dashed;
+            border-radius: 10px;     
+            }   
+            
+        .almost-there{
+            border: #f15b5b;
+            border-style:double;
+            border-radius: 10px;
+            background:#f15b5b;  
+            color: white;    
+        }
+
+    </style>
+</head>
 <div class="divider"></div>
  
 <!--Permissions control-->
@@ -376,16 +394,16 @@
     <div class="divider"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-2 red-text"><small>system message:</small></div><br>
-            <div class="col-md-10">
+            <div class="col-md-2 text-center almost-there wow fadeInUp"><p>Almost there!</p></div><br>
+            <div id="ldrbox" class="col-md-10 box white text-center">
                 
-                <p>Thanks for your registration. Kindly proceed to 
+                <span><h3>Thanks for your registration.</h3><br /> <h5>Kindly proceed to 
                         <a href="/up/up_create" class="btn-floating btn-small red waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                    create your profile to access LDR Apps.</p>
+                    create your profile to access LDR Apps.</h5></span>
             </div>
             
         </div>
-        <hr>
+        
         
     </div>
     <div class="divider"></div>

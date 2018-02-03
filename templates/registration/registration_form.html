@@ -5,6 +5,31 @@
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 
 {% block content %}
+<head>
+    <style>
+        #id_username{
+            font-size: 28px !important;
+        }
+
+        #id_password{
+            font-size: 28px !important;
+        }
+
+        #id_email{
+            font-size: 28px !important;
+        }
+
+        #id_password1{
+            font-size: 28px !important;
+        }
+
+        #id_password2{
+        font-size: 28px !important;
+        }
+    
+    </style>
+</head>
+
 <div class="divider"></div>
 <div class="divider"></div>
 <div class="container">
@@ -26,7 +51,7 @@
                     <form method="post" action="">
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <input class='btn btn-deep-purple btn-block' type="submit" value="{% trans 'Submit' %}" />
+                            <input class='btn btn-outline-primary btn-block' type="submit" value="{% trans 'Submit' %}" />
                     </form>
                    <!--Body-->
                 </div>

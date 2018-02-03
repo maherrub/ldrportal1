@@ -15,7 +15,9 @@
         }
 
         #tophome {
+            /*
             background-color: #01aeef;
+            */
             font-size: 16px !important;
             padding: .075rem .75rem !important;
         }
@@ -23,13 +25,21 @@
         #loginbox {
             border-radius: 5%;
         }
+
+        #id_username{
+            font-size: 28px !important;
+        }
+
+        #id_password{
+            font-size: 28px !important;
+        }
     </style>
 </head>
 <div class="divider"></div>
 <div class="divider"></div>
 <div class="container-fluid">
 
-    <div id="loginbox" class="card col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 wow fadeInDown" data-wow-delay="0.2s">
+    <div id="loginbox" class="card col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-4 offset-md-4 col-lg-4 offset-lg-4 wow fadeInDown" data-wow-delay="0.2s">
         
            
             <!--Header-->
@@ -44,7 +54,7 @@
                 <form method="post" action="">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <input id="tophome" class="btn btn-block btn-sm" type="submit" value="{% trans 'Log in' %}" />
+                    <input id="tophome" class="btn btn-block btn-outline-primary" type="submit" value="{% trans 'Log in' %}" />
                     <input type="hidden" name="next" value="{{ next }}" />
                 </form>
                 <div class="divider"></div>

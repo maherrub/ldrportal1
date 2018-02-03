@@ -59,29 +59,29 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-AWS_LOCATION = 'static'
+
+AWS_LOCATION = 'media'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = "https://%s/%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION, MEDIAFILES_LOCATION)
 
 
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATIC_URL = 'https://%s/%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION, STATICFILES_LOCATION)
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/static'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-AWS_LOCATION_MEDIA = 'media'
-
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = "https://%s/%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION_MEDIA, MEDIAFILES_LOCATION)
-
-
-#STATIC_URL = '/static/'
-#STATIC_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/static'
-
-
 #MEDIA_URL = '/media/'
 #MEDIA_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/media'
+
+#AWS_LOCATION = 'static'
+
+
+#STATICFILES_LOCATION = 'static'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATIC_URL = 'https://%s/%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION, STATICFILES_LOCATION)
 
 ADMIN_SITE_HEADER = "PROD ADMINISTRATOR"

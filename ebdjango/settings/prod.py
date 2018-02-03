@@ -10,6 +10,8 @@ ALLOWED_HOSTS = ['localhost',
                 'www.portal.ldr.sg/',
                 '13.229.158.225',
                 'ip-172-30-0-43.ap-southeast-1.compute.internal',
+                'https://ldrportal-staticfiles.s3.amazonaws.com',
+                'ldrportal-staticfiles.s3.amazonaws.com',
                 ]
 
 

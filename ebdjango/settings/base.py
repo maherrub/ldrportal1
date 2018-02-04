@@ -141,7 +141,7 @@ LOGIN_REDIRECT_URL = '/apps_list/'
 LOGIN_URL = '/accounts/login/'
 
 #crispy form settings
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 #Django Registration redux settings
 ACCOUNT_ACTIVATION_DAYS = 7

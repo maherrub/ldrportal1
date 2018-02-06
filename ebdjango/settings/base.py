@@ -158,38 +158,38 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'itservices@ldr.sg'
-EMAIL_HOST_PASSWORD = '7()fullfold'
+EMAIL_HOST_PASSWORD = 'MACloedganj%^&' #somethingmany password, pwd
 SERVER_EMAIL = 'itservices@ldr.sg'
 DEFAULT_FROM_EMAIL = 'itservices@ldr.sg'
 
 
 #REST framework webservice page size
-#REST_FRAMEWORK = {
-#    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-#    'PAGE_SIZE': 5
-#}
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5
+}
 
 # message tags for bootstrap3
-#try:
-#    from django.contrib.messages import constants as messages
-#except Exception as e:
-#    pass
-#    MESSAGE_TAGS = {
-#    messages.DEBUG: 'alert-info',
-#    messages.INFO: 'alert-info',
-#    messages.SUCCESS: 'alert-success',
-#    messages.WARNING: 'alert-warning',
-#    messages.ERROR: 'alert-danger',
-#}
+try:
+    from django.contrib.messages import constants as messages
+except Exception as e:
+    pass
+    MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 #API return records
-#API_LIMIT_PER_PAGE = 50
-#API_LIMIT_PER_PAGE = 0
-#TASTYPIE_ALLOW_MISSING_SLASH = True
-#TASTYPIE_ABSTRACT_APIKEY = True
+API_LIMIT_PER_PAGE = 50
+API_LIMIT_PER_PAGE = 0
+TASTYPIE_ALLOW_MISSING_SLASH = True
+TASTYPIE_ABSTRACT_APIKEY = True
 
 
-#AUTO_LOGOUT_DELAY = 30
+AUTO_LOGOUT_DELAY = 30
 
 # Maximum size, in bytes, of a request before it will be streamed to the
 # file system instead of into memory.

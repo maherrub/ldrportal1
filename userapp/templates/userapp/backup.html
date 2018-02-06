@@ -1,4 +1,5 @@
-
+{% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 {% load staticfiles %}
 {% load user_agents %}
@@ -48,13 +49,8 @@
                     </div>
                     
                     <!--Avatar-->
-                    
                     <div class="avatar">
-                        {% if up.usercover %}
-                            <img src="{{ up.usercover.url }}" class="rounded-circle img-responsive img-fluid" alt="">
-                        {% else %}
-                            <span class="rounded-circle">{{ up.firstname|slice:":1" }}{{ up.lastname|slice:":1" }}</span>
-                        {% endif %}
+                      <img src="{{ up.usercover.url }}" class="rounded-circle img-responsive img-fluid" alt="">
                     </div>
     
                     <div class="card-block">

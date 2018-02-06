@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% load staticfiles %}
+{% load user_agents %}
 {% block title %}{% trans "Apps List" %}{% endblock %}
 
 
@@ -20,6 +22,19 @@
             background:#f15b5b;  
             color: white;    
         }
+
+        .almost-there-top{
+            margin-top: 0%;
+        }
+
+        {% if request|is_mobile %}
+			/* start mobile landscape */
+			@media screen and (orientation: landscape) {
+                .almost-there-top{
+                    margin-top: -20%;
+			    }
+            }
+        {% endif %}
 
     </style>
 </head>
@@ -392,7 +407,7 @@
     <div class="divider"></div>
     <div class="divider"></div>
     <div class="divider"></div>
-    <div class="container">
+    <div class="container almost-there-top">
         <div class="row">
             <div class="col-md-2 text-center almost-there wow fadeInUp"><p>Almost there!</p></div><br>
             <div id="ldrbox" class="col-md-10 box white text-center">

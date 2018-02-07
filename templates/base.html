@@ -346,6 +346,31 @@ function myFunction2() {
 }
 </script>
 <!--/Socialmediauserlist-->
+
+<!--AppStash-->
+<script>
+        
+        function myFunction3() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput3");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL3");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+        
+                }
+            }
+        }
+        </script>
+<!--/AppStash-->
+
+
+
 <!--Animations-->
 <script type="text/javascript" src="{% static 'js/jquery.gsap.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/TweenMax.js' %}"></script>

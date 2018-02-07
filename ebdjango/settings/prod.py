@@ -1,7 +1,7 @@
 from .base import *
 #SECRET_KEY='byu%f0^45pzqb(3rj(_^r3!d=g9jl!n^1#4g)8#8br)(f4h3zo'
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['localhost',
                 'portal.ldr.sg',
                 'ldrportalapp.ap-southeast-1.elasticbeanstalk.com',
@@ -51,8 +51,8 @@ USER_AGENTS_CACHE = 'default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'AKIAJQAJBIZWGFU2FDMA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAJA3INWAICFXQV6SQ'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'ldrportal-staticfiles'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {

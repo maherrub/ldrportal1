@@ -43,6 +43,13 @@
 <!--Permissions control-->
 <div class="container">
 
+        <div class="col-sm-6 offset-sm-3">
+                <input type="text" id="myInput3" onkeyup="myFunction3()" placeholder="Search for apps.." title="Type in a name">
+        </div>
+        <div class="divider"></div>
+        <!--search ul tag -->
+        <ul id="myUL3">
+
 {% for up in ups %}
     
     {% if user.is_authenticated and user == up.user and up.user_type == 'Internal' %}
@@ -232,7 +239,7 @@
                             <div class="text-center white-text">
                                 
                                 <div class="card-block">
-                                    <h5>Help Desk</h5>
+                                   <li>Help Desk</li>
                                     
                                     <div class="flex-center">
                                         <div class="card-circle">
@@ -374,7 +381,7 @@
                 <div class="text-center white-text">
                     
                     <div class="card-block">
-                        <h5>Help Desk</h5>
+                        <li>Help Desk</li>
                         
                         <div class="flex-center">
                             <div class="card-circle">
@@ -425,6 +432,8 @@
     <div class="divider"></div>
     <div class="divider"></div>
 {% endfor %}
+    <ul>
+    <!--search ul tag-->
 </div>
 <!--Permissions control-->
 {% endblock %}

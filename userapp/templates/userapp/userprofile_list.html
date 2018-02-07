@@ -160,15 +160,20 @@
 </div>
 
 <div id="Friends" class="tabcontent">
+{% comment %}
   <!--load social registered users-->
   {% include 'userapp\socialmediauser_list.html' %}
   <!--/load social registered users-->
+{% endcomment %}
 </div>
+
 <!--/UserTabs-->
 
 <div id="Groups" class="tabcontent">
+    {% comment %}
   <h3>Groups from Facilities</h3>
   <p>You will be able to add a group here</p>
+  {% endcomment %}
 </div>
 <!--/UserTabs-->
 {% else %}

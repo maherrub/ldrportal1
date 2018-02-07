@@ -27,10 +27,10 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.mysql',
         'ENGINE': 'mysql.connector.django',
         'OPTIONS': {'charset': 'utf8mb4'},
-        'NAME': 'ldrportaldb',
-		'USER': 'ldrportaladmin',
-		'PASSWORD': 'ldr$app$admin',
-		'HOST': 'sgldrportaldbinstance.cwx1ekdurpdu.ap-southeast-1.rds.amazonaws.com',
+        'NAME': config('DB_NAME'),
+		'USER': config('DB_USER'),
+		'PASSWORD': config('DB_PASSWORD'),
+		'HOST': config('DB_HOST'),
         'PORT': '3306',  
     }
 }
@@ -51,9 +51,9 @@ USER_AGENTS_CACHE = 'default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'AKIAJCYRN6DWSBSOS56Q'
-AWS_SECRET_ACCESS_KEY = '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' #somekey
-AWS_STORAGE_BUCKET_NAME = 'ldrportal-staticfiles'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
@@ -74,14 +74,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/media'
-
-#AWS_LOCATION = 'static'
-
-
-#STATICFILES_LOCATION = 'static'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATIC_URL = 'https://%s/%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION, STATICFILES_LOCATION)
 
 ADMIN_SITE_HEADER = "PROD ADMINISTRATOR"

@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from decouple import config
+from unipath import Path
+from dj_database_url import parse as db_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__,os.pardir))))
@@ -20,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e45*=5v5q=f9_op$i!)e+_3d25r-n2nw4kh^q63eevj16*i!!g' 
+SECRET_KEY = config('DEBUG', cast=bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
@@ -157,10 +160,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.office365.com'
-EMAIL_HOST_USER = 'itservices@ldr.sg'
-EMAIL_HOST_PASSWORD = 'MACloedganj%^&' #somethingmany password, pwd
-SERVER_EMAIL = 'itservices@ldr.sg'
-DEFAULT_FROM_EMAIL = 'itservices@ldr.sg'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+SERVER_EMAIL = config('SERVER_EMAIL')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 #REST framework webservice page size

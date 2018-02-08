@@ -16,6 +16,70 @@
             margin-left: 30% !important;
             padding: 10px;
         }
+
+        #dynamicsize {
+					overflow: hidden;
+					font-size: 2em;
+		}
+
+        #manage-margins {
+            overflow: hidden;
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+
+        /* start pc landscape */
+			@media screen and (orientation: landscape) {
+				#dynamicsize {
+					overflow: hidden;
+					font-size: 2em;
+				}
+			}
+			/* end pc landscape */
+		
+		
+		
+			/* start mobile landscape */
+            {% if request|is_mobile %}
+			@media screen and (orientation: landscape) {
+				#dynamicsize {
+					overflow: hidden;
+					font-size: 4em;
+				}
+			}
+           
+			/* end mobile landscape */
+				
+		
+			/* start mobile portrait */
+			@media screen and (orientation: portrait) {
+				
+				#dynamicsize {
+					overflow: hidden;
+					font-size: 6em;
+				}
+
+                #manage-margins {
+                    overflow: hidden;
+                    margin-left: -20px;
+                    margin-right: -20px;
+                }
+			}
+            {% endif %}
+			/* end mobile portrait */
+		
+			
+			/* hiding long texts and show only the icons for small devices */ 
+			@media screen and (max-width: 480px) {
+				label {
+						font-size: 0px;
+						padding: 0px !important;
+					}
+			}
+			/* hiding long texts and show only the icons for small devices */ 
+
+
+
     </style>
 </head>
 <div class="divider"></div>
@@ -45,7 +109,7 @@
 <!--Body-->
      
 
-<div class="container-fluid">
+<div id="manage-margins" class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="tabs-wrapper"> 
@@ -67,7 +131,7 @@
     <!--Panel 1-->
     <div class="tab-pane fade in show active" id="myticket" role="tabpanel">
     <!--Body-->
-    <div class="container-fluid">
+    <div id="manage-margins" class="container-fluid">
     <div class="row">
     <div class="col-lg-12 col-md-12">
         <ul class="list-group">
@@ -105,8 +169,8 @@
             </div>
 
             <div class="col-lg-2 col-md-2 text-right">
-                <a class="badge badge light-blue" href="/helpdesk/{{ utl.pk }}/userticket_detail"><i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i></a>
-                <a class="badge badge orange" href="/helpdesk/{{ utl.pk }}/userticket_update"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                <a class="badge badge light-blue" href="/helpdesk/{{ utl.pk }}/userticket_detail"><i id="dynamicsize" class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i></a>
+                <a class="badge badge orange" href="/helpdesk/{{ utl.pk }}/userticket_update"><i id="dynamicsize" class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
             </div>
         </li>
         {% empty %}

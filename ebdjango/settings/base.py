@@ -24,6 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('DEBUG', cast=bool)
+#SECRET_KEY='9xbc&jl&&krl@5gps*dk=&2f-$@+jfme+rqb+5w#d918e*!93b'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
@@ -94,12 +96,7 @@ WSGI_APPLICATION = 'ebdjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-
 #Database moved to local and prod
-
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

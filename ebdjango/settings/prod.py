@@ -71,7 +71,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/static'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    ('css', os.path.join(STATIC_ROOT , 'css')),
+	('js', os.path.join(STATIC_ROOT , 'js')),
+	('images', os.path.join(STATIC_ROOT , 'images')),
+    ('video', os.path.join(STATIC_ROOT , 'video')),
+    ('audio', os.path.join(STATIC_ROOT , 'audio')),
+    ('admin', os.path.join(STATIC_ROOT , 'admin')),
+
 ]
 
 

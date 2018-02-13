@@ -38,6 +38,7 @@ STATICFILES_DIRS = (
 	('images', os.path.join(STATIC_ROOT , 'images')),
     ('video', os.path.join(STATIC_ROOT , 'video')),
     ('audio', os.path.join(STATIC_ROOT , 'audio')),
+    ('admin', os.path.join(STATIC_ROOT , 'admin')),
 )
 
 MEDIA_URL = '/media/'

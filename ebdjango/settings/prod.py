@@ -51,33 +51,30 @@ USER_AGENTS_CACHE = 'default'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+#AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+#AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+#AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+#AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+#AWS_S3_OBJECT_PARAMETERS = {
+#    'CacheControl': 'max-age=86400',
+#}
 
 
 AWS_LOCATION = 'media'
 
 MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = "https://%s/%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION, MEDIAFILES_LOCATION)
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#MEDIA_URL = "https://%s/%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION, MEDIAFILES_LOCATION)
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/media'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/ec2-user/eb-virt/ebdjango/ebsrc/static'
 
 STATICFILES_DIRS = [
-    ('css', os.path.join(STATIC_ROOT , 'css')),
-	('js', os.path.join(STATIC_ROOT , 'js')),
-	('images', os.path.join(STATIC_ROOT , 'images')),
-    ('video', os.path.join(STATIC_ROOT , 'video')),
-    ('audio', os.path.join(STATIC_ROOT , 'audio')),
-    ('admin', os.path.join(STATIC_ROOT , 'admin')),
-
+    os.path.join(BASE_DIR, 'static'),
+    
 ]
 
 

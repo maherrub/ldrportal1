@@ -47,7 +47,7 @@ sklearn==0.0
 svgwrite==1.1.12
 Tree==0.2.3
 ua-parser==0.7.3
-urllib3==1.22
+urllib3==1.26.5
 user-agents==1.1.0
 python-decouple==3.1
 Unipath==1.1
